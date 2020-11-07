@@ -4,6 +4,7 @@
     <EntitySetMapping Name="catalogo">
       <EntityTypeMapping TypeName="ecomerceModel.catalogo">
         <MappingFragment StoreEntitySet="catalogo">
+          <ScalarProperty Name="foro" ColumnName="foro" />
           <ScalarProperty Name="id_producto" ColumnName="id_producto" />
           <ScalarProperty Name="producto" ColumnName="producto" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
