@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ecomerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ecomerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="catalogo">
           <Key>
             <PropertyRef Name="id_producto" />
@@ -60,14 +60,14 @@
           <Property Name="numero" Type="varchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK_contratos_contratos">
-          <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
-          <End Role="contratos1" Type="Self.contratos" Multiplicity="0..1" />
+          <End Role="catalogo" Type="Self.catalogo" Multiplicity="0..1" />
+          <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="contratos">
-              <PropertyRef Name="id_contrato" />
+            <Principal Role="catalogo">
+              <PropertyRef Name="id_producto" />
             </Principal>
-            <Dependent Role="contratos1">
-              <PropertyRef Name="id_contrato" />
+            <Dependent Role="contratos">
+              <PropertyRef Name="id_maquina" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -102,8 +102,8 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_contratos_contratos" Association="Self.FK_contratos_contratos">
+            <End Role="catalogo" EntitySet="catalogo" />
             <End Role="contratos" EntitySet="contratos" />
-            <End Role="contratos1" EntitySet="contratos" />
           </AssociationSet>
           <AssociationSet Name="FK_contratos_Historico" Association="Self.FK_contratos_Historico">
             <End Role="Historico" EntitySet="Historico" />
@@ -114,8 +114,7 @@
             <End Role="contratos" EntitySet="contratos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ecomerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -130,6 +129,7 @@
           <Property Name="capacidad" Type="Int32" />
           <Property Name="procesador" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="sistemaOperativo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="contratos" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="catalogo" ToRole="contratos" />
         </EntityType>
         <EntityType Name="contratos">
           <Key>
@@ -144,6 +144,7 @@
           <NavigationProperty Name="contratos2" Relationship="Self.FK_contratos_contratos" FromRole="contratos1" ToRole="contratos" />
           <NavigationProperty Name="Historico" Relationship="Self.FK_contratos_Historico" FromRole="contratos" ToRole="Historico" />
           <NavigationProperty Name="usuarios" Relationship="Self.FK_contratos_usuarios" FromRole="contratos" ToRole="usuarios" />
+          <NavigationProperty Name="catalogo" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="contratos" ToRole="catalogo" />
         </EntityType>
         <EntityType Name="Historico">
           <Key>
@@ -233,7 +234,23 @@
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="contratos" EntitySet="contratos" />
           </AssociationSet>
+          <AssociationSet Name="FK_contratos_contratos1" Association="ecomerceModel.FK_contratos_contratos1">
+            <End Role="catalogo" EntitySet="catalogo" />
+            <End Role="contratos" EntitySet="contratos" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_contratos_contratos1">
+          <End Type="ecomerceModel.catalogo" Role="catalogo" Multiplicity="0..1" />
+          <End Type="ecomerceModel.contratos" Role="contratos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="catalogo">
+              <PropertyRef Name="id_producto" />
+            </Principal>
+            <Dependent Role="contratos">
+              <PropertyRef Name="id_maquina" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

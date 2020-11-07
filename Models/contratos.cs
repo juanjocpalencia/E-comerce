@@ -24,5 +24,6 @@ namespace E_comerce.Models
         public virtual contratos contratos2 { get; set; }
         public virtual Historico Historico { get; set; }
         public virtual usuarios usuarios { get; set; }
+        public virtual catalogo catalogo { get; set; }
     }
 }

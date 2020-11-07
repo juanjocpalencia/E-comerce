@@ -14,6 +14,12 @@ namespace E_comerce.Models
     
     public partial class catalogo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public catalogo()
+        {
+            this.contratos = new HashSet<contratos>();
+        }
+    
         public int id_producto { get; set; }
         public string producto { get; set; }
         public string descripcion { get; set; }
@@ -21,5 +27,8 @@ namespace E_comerce.Models
         public Nullable<int> capacidad { get; set; }
         public string procesador { get; set; }
         public string sistemaOperativo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<contratos> contratos { get; set; }
     }
 }
