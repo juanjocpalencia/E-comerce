@@ -11,7 +11,6 @@
     <Property Name="capacidad" Type="int" />
     <Property Name="procesador" Type="varchar" MaxLength="200" />
     <Property Name="sistemaOperativo" Type="varchar" MaxLength="200" />
-    <Property Name="foro" Type="varchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="contratos">
     <Key>

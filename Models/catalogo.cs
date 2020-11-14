@@ -27,7 +27,6 @@ namespace E_comerce.Models
         public Nullable<int> capacidad { get; set; }
         public string procesador { get; set; }
         public string sistemaOperativo { get; set; }
-        public string foro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<contratos> contratos { get; set; }
