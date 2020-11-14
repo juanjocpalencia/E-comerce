@@ -17,5 +17,13 @@ namespace E_comerce.Controllers
         {
             return View(db.catalogo.ToList());
         }
+
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
     }
 }
