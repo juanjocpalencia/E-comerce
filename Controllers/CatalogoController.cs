@@ -24,6 +24,11 @@ namespace E_comerce.Controllers
             return View();
         }
 
-
+        public ActionResult Create([Bind(Include = "producto,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
+        {
+            db.catalogo.Add(catalogonew);
+            db.SaveChanges();
+            return RedirectToAction("Home", "catalogo");
+        }
     }
 }
