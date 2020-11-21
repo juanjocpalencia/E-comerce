@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_comerce.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,22 @@ namespace E_comerce.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        ecomerceEntities db = new ecomerceEntities();
+        public ActionResult Index(string buscar)
         {
-            return View();
+            if (buscar == null)
+            {
+                return View(db.catalogo.ToList());
+            }
+            else
+            {
+                var busqueda = from catalogo in db.catalogo
+                               where catalogo.sistemaOperativo.Contains(buscar)
+                               || catalogo.descripcion.Contains(buscar)
+                               || catalogo.procesador.Contains(buscar)
+                               select catalogo;
+                return View(busqueda.ToList());
+            }
         }
 
         public ActionResult About()
