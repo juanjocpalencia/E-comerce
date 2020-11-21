@@ -13,13 +13,22 @@
         <div class="w3-col m3">
             <!-- Profile -->
             <div class="w3-card w3-round w3-white">
+               
                 <div class="w3-container">
-                    <h4 class="w3-center">My Profile</h4>
-                    <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-                    <hr>
-                    <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-                    <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                    <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                    @if (Session["Nombre"] != null)
+                    {
+                        <h4 class="w3-center">@Session["Nombre"].ToString()</h4>
+                        <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+                        <hr>
+                        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
+                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+
+                    }
+                    else
+                    {
+                        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black col-lg-12 col-md-12">Login</button>
+                    }
                 </div>
             </div>
             <br>
@@ -162,11 +171,7 @@
                 </div>
             </div>
             <br>
-            <div class="w3-card w3-round w3-white w3-center">
-                <div class="w3-container">
-                    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Animated Modal</button>
-                </div>
-            </div>
+
             <!-- End Right Column -->
         </div>
 
@@ -186,15 +191,29 @@
         <header class="w3-container w3-teal">
             <span onclick="document.getElementById('id01').style.display='none'"
                   class="w3-button w3-display-topright">&times;</span>
-            <h2>Modal Header</h2>
+            <h2>Bienvenido a E-servercom</h2>
         </header>
-        <div class="w3-container">
-            <p>Some text..</p>
-            <p>Some text..</p>
+        <div class="w3-container " >
+            <div class="w3-row m7" >
+                <div class="w3-half">
+                    <img src="~/Archivos/logo.JPG" />
+                    <div style="text-align:center; font: oblique bold 200% cursive;">
+                        <p><strong> E-Servercom </strong></p>
+                    </div>
+
+                </div>
+                <div class="w3-half">
+                    <br /><label> Usuario </label>
+                    <input type="text" class="form-control" id="user" />
+
+                    <br /><label>Contraseña</label>
+                    <input type="password" class="form-control" id="pwd" />
+                    <br />
+                    <input class="form-control col-lg-12 col-md-12" type="button" value="Enter"  onclick="Login()"/>
+                </div>
+            </div>
         </div>
-        <footer class="w3-container w3-teal">
-            <p>Modal Footer</p>
-        </footer>
+
     </div>
 </div>
 <!------------------------------------------------------------->

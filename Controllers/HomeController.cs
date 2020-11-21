@@ -23,11 +23,12 @@ namespace E_comerce.Controllers
                                where catalogo.sistemaOperativo.Contains(buscar)
                                || catalogo.descripcion.Contains(buscar)
                                || catalogo.procesador.Contains(buscar)
-                               ||catalogo.familia.Contains(buscar)
+                               || catalogo.familia.Contains(buscar)
                                select catalogo;
                 return View(busqueda.ToList());
             }
         }
+
 
         public ActionResult About()
         {
@@ -42,5 +43,20 @@ namespace E_comerce.Controllers
 
             return View();
         }
-    }
+        [HttpPost]
+        public bool Login(string user,string pwd){
+            var sesion = db.usuarios.Where(s => s.correo.Contains(user) && s.pwd.Contains(pwd)).FirstOrDefault();
+            if (sesion != null)
+            {
+                Session["Nombre"] = user;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+          
+        }
+}
 }
