@@ -70,7 +70,7 @@
                     <p><strong>Categorigas</strong></p>
                     <p>
                         @foreach (var tipo in ViewBag.familias) { 
-                        <span class="w3-tag w3-small w3-theme-d5">@tipo</span>
+                        <span class="w3-tag w3-small w3-theme-d5" onclick="buscarFamilia('@tipo')">@tipo</span>
                         }
                         <!--<span class="w3-tag w3-small w3-theme-d5">News</span>
                         <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>

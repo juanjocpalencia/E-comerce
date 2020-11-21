@@ -3,3 +3,8 @@
     
     location.href ='/Home/Index?buscar=' + palabra;
 }
+function buscarFamilia(palabra) {
+
+
+    location.href = '/Home/Index?buscar=' + palabra;
+}

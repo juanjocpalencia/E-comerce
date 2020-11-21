@@ -23,6 +23,7 @@ namespace E_comerce.Controllers
                                where catalogo.sistemaOperativo.Contains(buscar)
                                || catalogo.descripcion.Contains(buscar)
                                || catalogo.procesador.Contains(buscar)
+                               ||catalogo.familia.Contains(buscar)
                                select catalogo;
                 return View(busqueda.ToList());
             }
