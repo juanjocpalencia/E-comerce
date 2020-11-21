@@ -12,6 +12,8 @@
     <Property Name="procesador" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="sistemaOperativo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="contratos" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="catalogo" ToRole="contratos" />
+    <Property Name="foro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="familia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="contratos">
     <Key>

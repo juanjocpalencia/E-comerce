@@ -24,11 +24,26 @@ namespace E_comerce.Controllers
             return View();
         }
 
-        public ActionResult Create([Bind(Include = "producto,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
+        public ActionResult Create([Bind(Include = "producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
         {
             db.catalogo.Add(catalogonew);
             db.SaveChanges();
             return RedirectToAction("Home", "catalogo");
         }
+
+        public ActionResult Edit(int? id)
+        {
+            return View(db.catalogo.Find(id));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id_producto,producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
+        {
+
+            db.Entry(catalogonew).State = System.Data.Entity.EntityState.Modified; 
+            db.SaveChanges();
+            return RedirectToAction("catalogo","Home");
+        }
+
     }
 }

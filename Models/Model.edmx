@@ -16,6 +16,8 @@
           <Property Name="capacidad" Type="int" />
           <Property Name="procesador" Type="varchar" MaxLength="200" />
           <Property Name="sistemaOperativo" Type="varchar" MaxLength="200" />
+          <Property Name="foro" Type="varchar" MaxLength="200" />
+          <Property Name="familia" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="contratos">
           <Key>
@@ -130,6 +132,8 @@
           <Property Name="procesador" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="sistemaOperativo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="contratos" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="catalogo" ToRole="contratos" />
+          <Property Name="foro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="familia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="contratos">
           <Key>
@@ -260,6 +264,8 @@
           <EntitySetMapping Name="catalogo">
             <EntityTypeMapping TypeName="ecomerceModel.catalogo">
               <MappingFragment StoreEntitySet="catalogo">
+                <ScalarProperty Name="familia" ColumnName="familia" />
+                <ScalarProperty Name="foro" ColumnName="foro" />
                 <ScalarProperty Name="id_producto" ColumnName="id_producto" />
                 <ScalarProperty Name="producto" ColumnName="producto" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />

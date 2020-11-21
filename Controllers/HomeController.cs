@@ -12,6 +12,7 @@ namespace E_comerce.Controllers
         ecomerceEntities db = new ecomerceEntities();
         public ActionResult Index(string buscar)
         {
+            ViewBag.familias = db.catalogo.Select(s => s.familia).Distinct().ToList();
             if (buscar == null)
             {
                 return View(db.catalogo.ToList());

@@ -25,6 +25,7 @@
             <br>
 
             <!-- Accordion -->
+            <!-------
             <div class="w3-card w3-round">
                 <div class="w3-white">
                     <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
@@ -66,9 +67,12 @@
             <!-- Interests -->
             <div class="w3-card w3-round w3-white w3-hide-small">
                 <div class="w3-container">
-                    <p>Interests</p>
+                    <p><strong>Categorigas</strong></p>
                     <p>
-                        <span class="w3-tag w3-small w3-theme-d5">News</span>
+                        @foreach (var tipo in ViewBag.familias) { 
+                        <span class="w3-tag w3-small w3-theme-d5">@tipo</span>
+                        }
+                        <!--<span class="w3-tag w3-small w3-theme-d5">News</span>
                         <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
                         <span class="w3-tag w3-small w3-theme-d3">Labels</span>
                         <span class="w3-tag w3-small w3-theme-d2">Games</span>
@@ -78,7 +82,7 @@
                         <span class="w3-tag w3-small w3-theme-l2">Food</span>
                         <span class="w3-tag w3-small w3-theme-l3">Design</span>
                         <span class="w3-tag w3-small w3-theme-l4">Art</span>
-                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>
+                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>-->
                     </p>
                 </div>
             </div>
@@ -103,9 +107,9 @@
                 <div class="w3-col m12">
                     <div class="w3-card w3-round w3-white">
                         <div class="w3-container w3-padding">
-                            <h6 class="w3-opacity">Search</h6>
-                            <p contenteditable="true" class="w3-border w3-padding" id="Busqueda">Keyword</p>
-                            <input type="button" class="w3-button w3-theme" value="Sarch" onclick="buscar()">
+                            <h6 class="w3-opacity">Buscar</h6>
+                            <p contenteditable="true" class="w3-border w3-padding" id="Busqueda"></p>
+                            <input type="button" class="w3-button w3-theme" value="Buscar" onclick="buscar()">
                         </div>
                     </div>
                 </div>
@@ -131,10 +135,10 @@
                             @item.producto
                         </div>
                     </div>
-               
 
-                <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom w3-100"><i class="fa fa-thumbs-up"></i>Ordenar</button>
-            </div>
+
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom w3-100"><i class="fa fa-thumbs-up"></i>Ordenar</button>
+                </div>
             }
 
 
@@ -155,7 +159,11 @@
                 </div>
             </div>
             <br>
-
+            <div class="w3-card w3-round w3-white w3-center">
+                <div class="w3-container">
+                    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Open Animated Modal</button>
+                </div>
+            </div>
             <!-- End Right Column -->
         </div>
 
@@ -166,6 +174,27 @@
 </div>
 <br>
 
+
+
+
+<!--Modal------------------------------------------------------>
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content  w3-animate-opacity w3-card-4">
+        <header class="w3-container w3-teal">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-display-topright">&times;</span>
+            <h2>Modal Header</h2>
+        </header>
+        <div class="w3-container">
+            <p>Some text..</p>
+            <p>Some text..</p>
+        </div>
+        <footer class="w3-container w3-teal">
+            <p>Modal Footer</p>
+        </footer>
+    </div>
+</div>
+<!------------------------------------------------------------->
 
 
 
