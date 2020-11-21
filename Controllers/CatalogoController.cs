@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,8 +25,25 @@ namespace E_comerce.Controllers
             return View();
         }
 
-        public ActionResult Create([Bind(Include = "producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
+        public ActionResult Create([Bind(Include = "producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew, HttpPostedFileBase ruta_imagen)
         {
+            if (ruta_imagen != null && ruta_imagen.ContentLength > 0)
+            {
+                try
+                {
+                    /*Guardar archivo */
+                    string path = Path.Combine(Server.MapPath("~/Archivos/Sistemas/" ), Path.GetFileName(ruta_imagen.FileName));
+                    System.IO.Directory.CreateDirectory((Server.MapPath("~/Archivos/Sistemas/")));
+                    ruta_imagen.SaveAs(path);
+                    System.Diagnostics.Debug.WriteLine("Archivo guardado");
+                    var ruta = "../Archivos/Sistemas/" + ruta_imagen.FileName;
+                    catalogonew.foro = ruta;
+                }
+                catch (Exception e)
+                {
+
+                }
+            }
             db.catalogo.Add(catalogonew);
             db.SaveChanges();
             return RedirectToAction("Home", "catalogo");
@@ -37,12 +55,28 @@ namespace E_comerce.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_producto,producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew)
+        public ActionResult Edit([Bind(Include = "id_producto,producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew ,HttpPostedFileBase ruta_imagen)
         {
+            if (ruta_imagen != null && ruta_imagen.ContentLength > 0)
+            {
+                try
+                {
+                    /*Guardar archivo */
+                    string path = Path.Combine(Server.MapPath("~/Archivos/Sistemas/"), Path.GetFileName(ruta_imagen.FileName));
+                    System.IO.Directory.CreateDirectory((Server.MapPath("~/Archivos/Sistemas/")));
+                    ruta_imagen.SaveAs(path);
+                    System.Diagnostics.Debug.WriteLine("Archivo guardado");
+                    var ruta = "../Archivos/Sistemas/" + ruta_imagen.FileName;
+                    catalogonew.foro = ruta;
+                }
+                catch (Exception e)
+                {
 
+                }
+            }
             db.Entry(catalogonew).State = System.Data.Entity.EntityState.Modified; 
             db.SaveChanges();
-            return RedirectToAction("catalogo","Home");
+            return RedirectToAction("Index", "catalogo");
         }
 
     }

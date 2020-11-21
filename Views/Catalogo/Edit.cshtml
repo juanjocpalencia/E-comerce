@@ -7,10 +7,10 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Catalogo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>catalogo</h4>
         <hr />
@@ -66,9 +66,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.foro, htmlAttributes: new { @class = "control-label col-md-2" })
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.foro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.foro, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.foro, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -80,7 +80,12 @@
                 @Html.ValidationMessageFor(model => model.familia, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group ml-2">
+            <p class="control-label">Imagen</p>
+            <div class="col-md-6">
+                <input type="file" name="ruta_imagen" id="ruta_imagen" class="form-control-file" />
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

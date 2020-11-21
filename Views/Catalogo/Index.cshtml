@@ -29,35 +29,47 @@
         <th>
             @Html.DisplayNameFor(model => model.sistemaOperativo)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.familia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foro)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.producto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.costo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.procesador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sistemaOperativo)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_producto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_producto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_producto })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.producto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.costo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.capacidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.procesador)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.sistemaOperativo)
+    </td>
+    <th>
+        @Html.DisplayFor(modelItem => item.familia)
+    </th>
+    <th>
+        @Html.DisplayFor(modelItem =>item.foro)
+    </th>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_producto }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_producto }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id_producto })
+    </td>
+</tr>
 }
 
 </table>
