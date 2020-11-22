@@ -1,0 +1,69 @@
+﻿@model IEnumerable<E_comerce.Models.usuarios>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pwd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ap_mat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ap_pat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numero)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pwd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ap_mat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ap_pat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numero)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_usuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_usuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_usuario })
+        </td>
+    </tr>
+}
+
+</table>

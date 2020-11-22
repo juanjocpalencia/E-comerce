@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<E_comerce.Models.catalogo>
 
+
 @{
     ViewBag.Title = "Home Page";
 
@@ -13,7 +14,7 @@
         <div class="w3-col m3">
             <!-- Profile -->
             <div class="w3-card w3-round w3-white">
-               
+
                 <div class="w3-container">
                     @if (Session["Nombre"] != null)
                     {
@@ -35,63 +36,64 @@
 
             <!-- Accordion -->
             <!-------
-            <div class="w3-card w3-round">
-                <div class="w3-white">
-                    <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-                    <div id="Demo1" class="w3-hide w3-container">
-                        <p>Some text..</p>
-                    </div>
-                    <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-                    <div id="Demo2" class="w3-hide w3-container">
-                        <p>Some other text..</p>
-                    </div>
-                    <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-                    <div id="Demo3" class="w3-hide w3-container">
-                        <div class="w3-row-padding">
-                            <br>
-                            <div class="w3-half">
-                                <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
-                            <div class="w3-half">
-                                <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-                            </div>
+        <div class="w3-card w3-round">
+            <div class="w3-white">
+                <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
+                <div id="Demo1" class="w3-hide w3-container">
+                    <p>Some text..</p>
+                </div>
+                <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
+                <div id="Demo2" class="w3-hide w3-container">
+                    <p>Some other text..</p>
+                </div>
+                <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+                <div id="Demo3" class="w3-hide w3-container">
+                    <div class="w3-row-padding">
+                        <br>
+                        <div class="w3-half">
+                            <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
+                        </div>
+                        <div class="w3-half">
+                            <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                        </div>
+                        <div class="w3-half">
+                            <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
+                        </div>
+                        <div class="w3-half">
+                            <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
+                        </div>
+                        <div class="w3-half">
+                            <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
+                        </div>
+                        <div class="w3-half">
+                            <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
                         </div>
                     </div>
                 </div>
             </div>
-            <br>
+        </div>
+        <br>
 
-            <!-- Interests -->
+        <!-- Interests -->
             <div class="w3-card w3-round w3-white w3-hide-small">
                 <div class="w3-container">
                     <p><strong>Categorigas</strong></p>
                     <p>
-                        @foreach (var tipo in ViewBag.familias) { 
-                        <span class="w3-tag w3-small w3-theme-d5" onclick="buscarFamilia('@tipo')">@tipo</span>
+                        @foreach (var tipo in ViewBag.familias)
+                        {
+                            <span class="w3-tag w3-small w3-theme-d5" onclick="buscarFamilia('@tipo')">@tipo</span>
                         }
                         <!--<span class="w3-tag w3-small w3-theme-d5">News</span>
-                        <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-                        <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-                        <span class="w3-tag w3-small w3-theme-d2">Games</span>
-                        <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-                        <span class="w3-tag w3-small w3-theme">Games</span>
-                        <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-                        <span class="w3-tag w3-small w3-theme-l2">Food</span>
-                        <span class="w3-tag w3-small w3-theme-l3">Design</span>
-                        <span class="w3-tag w3-small w3-theme-l4">Art</span>
-                        <span class="w3-tag w3-small w3-theme-l5">Photos</span>-->
+                    <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
+                    <span class="w3-tag w3-small w3-theme-d3">Labels</span>
+                    <span class="w3-tag w3-small w3-theme-d2">Games</span>
+                    <span class="w3-tag w3-small w3-theme-d1">Friends</span>
+                    <span class="w3-tag w3-small w3-theme">Games</span>
+                    <span class="w3-tag w3-small w3-theme-l1">Friends</span>
+                    <span class="w3-tag w3-small w3-theme-l2">Food</span>
+                    <span class="w3-tag w3-small w3-theme-l3">Design</span>
+                    <span class="w3-tag w3-small w3-theme-l4">Art</span>
+                    <span class="w3-tag w3-small w3-theme-l5">Photos</span>-->
                     </p>
                 </div>
             </div>
@@ -169,17 +171,92 @@
 
                     <br />
                 </div>
+                <br />
             </div>
-            <br>
-
-            <!-- End Right Column -->
         </div>
+        <br />
+        <br />
+        @if (Session["Nombre"] == null)
+        {
+        <div class="w3-col m2">
+            <div class="w3-card w3-round w3-white w3-center">
+                <div class="w3-container">
+                    <p><strong>Registrarse </strong></p>
+                    <hr />
+                    <div>
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Correo </label>
+                            <div class="col-md-12">
+                                <input type="text" id="correo" class="form-control" />
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Contraseña</label>
+                            <div class="col-md-12">
+                                <input type="text" id="pwd" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Usuario</label>
+                            <div class="col-md-12">
+                                <input type="text" id="usuario" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Nombre</label>
+                            <div class="col-md-12">
+                                <input type="text" id="Nombre" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Apellido Materno</label>
+                            <div class="col-md-12">
+                                <input type="text" id="ap_mat" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Apellido Paterno</label>
+                            <div class="col-md-12">
+                                <input type="text" id="ap_pat" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Numero</label>
+                            <div class="col-md-12">
+                                <input type="text" id="numero" class="form-control" />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+
+                            <input type="submit" value="Create" class="btn btn-default col-md-12" />
+
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+        }
+
+        <!-- End Right Column -->
+    </div>
 
         <!-- End Grid -->
     </div>
 
     <!-- End Page Container -->
-</div>
+
 <br>
 
 
