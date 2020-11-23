@@ -178,3 +178,5 @@ C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\obj\Debug\E-comerce.cspro
 C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\obj\Debug\E-comerce.csproj.CopyComplete
 C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\obj\Debug\E-comerce.dll
 C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\obj\Debug\E-comerce.pdb
+C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\bin\PayPal.dll
+C:\Users\JuanJo\Desktop\Github-loar\comercio\E-comerce\bin\PayPal.xml

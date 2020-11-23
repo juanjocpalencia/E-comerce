@@ -24,7 +24,8 @@ namespace E_comerce.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew, HttpPostedFileBase ruta_imagen)
         {
             if (ruta_imagen != null && ruta_imagen.ContentLength > 0)
