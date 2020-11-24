@@ -28,7 +28,7 @@
                     }
                     else
                     {
-                        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black col-lg-12 col-md-12">Login</button>
+                        <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-light btn-lg btn-block">Login</button>
                     }
                 </div>
             </div>
@@ -120,7 +120,7 @@
                         <div class="w3-container w3-padding">
                             <h6 class="w3-opacity">Buscar</h6>
                             <p contenteditable="true" class="w3-border w3-padding" id="Busqueda"></p>
-                            <input type="button" class="w3-button w3-theme" value="Buscar" onclick="buscar()">
+                            <input type="button" class="btn btn-secondary" value="Buscar" onclick="buscar()">
                         </div>
                     </div>
                 </div>
@@ -128,12 +128,12 @@
             @foreach (var item in Model)
             {
                 <div class="w3-container w3-card w3-white w3-round w3-margin">
-                    <div class="w3-row">
+                    <br />
+                    <div>
                         <img src="@item.foro" />
                     </div>
                     <div class="w3-row">
-                        <br>
-                        <h4>@item.sistemaOperativo</h4><br>
+                        <h4>@item.sistemaOperativo</h4>
                         <hr class="w3-clear">
                         <strong>Descripción</strong><br />
                         @item.descripcion
@@ -150,8 +150,8 @@
                         </div>
                     </div>
 
-
-                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom w3-100"><i class="fa fa-thumbs-up"></i>Ordenar</button>
+                    <button type="button" class="btn btn-secondary"><i class="fa fa-thumbs-up"></i>Ordenar</button>
+                    <br />
                 </div>
             }
 
@@ -160,12 +160,12 @@
         </div>
 
         <!-- Right Column -->
-        <div class="w3-col m2">
+        <!--<div class="w3-col m2">
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
 
 
-                    <p><strong>Date</strong></p>
+                    <p><strong>Fecha</strong></p>
                     <hr />
                     <p><strong>@DateTime.Now.ToString("dd-MM-yyyy")</strong></p>
 
@@ -175,14 +175,13 @@
             </div>
         </div>
         <br />
-        <br />
+        <br />-->
         @if (Session["Nombre"] == null)
         {
         <div class="w3-col m2">
             <div class="w3-card w3-round w3-white w3-center">
                 <div class="w3-container">
                     <p><strong>Registrarse </strong></p>
-                    <hr />
                     <div>
                         <form method="post" action="/usuarios/create">
 
@@ -236,12 +235,9 @@
                                     <input type="text" id="numero" name="numero" class="form-control" />
                                 </div>
                             </div>
-                            <br />
-                            <div class="form-group">
 
-                                <input type="submit" value="Create" class="btn btn-default col-md-12" />
-
-                            </div>
+                            <br/>
+                                <input type="submit" value="Create" class="btn btn-light" />
                         </form>
                     </div>
                     <br />
