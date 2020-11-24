@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="id_usuario" />
           </Key>
-          <Property Name="id_usuario" Type="int" Nullable="false" />
+          <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="200" />
           <Property Name="pwd" Type="varchar" MaxLength="200" />
           <Property Name="usuario" Type="varchar" MaxLength="200" />

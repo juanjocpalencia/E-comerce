@@ -46,16 +46,24 @@ namespace E_comerce.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_usuario,correo,pwd,usuario,nombre,ap_mat,ap_pat,numero")] usuarios usuarios)
+        public ActionResult Create(string correo,string pwd, string usuario, string nombre,string ap_mat,string ap_pat ,string numero)//([Bind(Include = "id_usuario,correo,pwd,usuario,nombre,ap_mat,ap_pat,numero")] usuarios usuarios)
         {
+            usuarios user = new usuarios();
+            user.nombre = nombre;
+            user.ap_pat = ap_pat;
+            user.ap_mat = ap_mat;
+            user.correo = correo;
+            user.pwd = pwd;
+            user.usuario = usuario;
+            user.numero = numero;
             if (ModelState.IsValid)
             {
-                db.usuarios.Add(usuarios);
+                db.usuarios.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
-            return View(usuarios);
+            return View(user);
         }
 
         // GET: usuarios/Edit/5
