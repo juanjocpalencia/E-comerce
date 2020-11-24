@@ -10,15 +10,22 @@ function buscarFamilia(palabra) {
 }
 
 function Login() {
+
     con = document.getElementById('pwd').value;
     correo = document.getElementById('user').value;
     $.ajax({
         url: '/Home/Login',
         data: { pwd: con ,user:correo},
-        method:'POST ' ,
+        method:'POST' ,
         success: function (data) {
-            alert(data);
+            
+            document.getElementById('id01').style.display = 'none';
+            location.href = "/Home/index";
+        },
+        error: function (data) {
+            alert("Error");
         }
+
     });
 }
 

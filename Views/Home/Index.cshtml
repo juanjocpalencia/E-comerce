@@ -19,11 +19,8 @@
                     @if (Session["Nombre"] != null)
                     {
                         <h4 class="w3-center">@Session["Nombre"].ToString()</h4>
-                        <p class="w3-center"><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
                         <hr>
-                        <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-                        <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-                        <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+                        <strong>Bienvenido</strong>
 
                     }
                     else
@@ -197,7 +194,7 @@
                             <div class="form-group">
                                 <label class="control-label col-md-12">Contraseña</label>
                                 <div class="col-md-12">
-                                    <input type="password" id="pwd" name="pwd" class="form-control" />
+                                    <input type="password" name="pwd" class="form-control" />
                                 </div>
                             </div>
 
