@@ -80,5 +80,10 @@ namespace E_comerce.Controllers
             return RedirectToAction("Index", "catalogo");
         }
 
+        public ActionResult comprar(int? id)
+        {
+            return View(db.catalogo.Find(id));
+        }
+
     }
 }
