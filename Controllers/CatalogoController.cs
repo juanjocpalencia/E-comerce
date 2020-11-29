@@ -47,7 +47,7 @@ namespace E_comerce.Controllers
             }
             db.catalogo.Add(catalogonew);
             db.SaveChanges();
-            return RedirectToAction("Home", "catalogo");
+            return RedirectToAction("Index", "catalogo");
         }
 
         public ActionResult Edit(int? id)
