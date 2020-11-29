@@ -24,7 +24,8 @@ namespace E_comerce.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "producto,familia,descripcion,costo,capacidad,procesador,sistemaoperativo")] catalogo catalogonew, HttpPostedFileBase ruta_imagen)
         {
             if (ruta_imagen != null && ruta_imagen.ContentLength > 0)
@@ -77,6 +78,11 @@ namespace E_comerce.Controllers
             db.Entry(catalogonew).State = System.Data.Entity.EntityState.Modified; 
             db.SaveChanges();
             return RedirectToAction("Index", "catalogo");
+        }
+
+        public ActionResult comprar(int? id)
+        {
+            return View(db.catalogo.Find(id));
         }
 
     }
