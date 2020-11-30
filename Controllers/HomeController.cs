@@ -11,6 +11,10 @@ namespace E_comerce.Controllers
     public class HomeController : Controller
     {
         ecomerceEntities db = new ecomerceEntities();
+        public ActionResult SuccessView()
+        {
+            return View();
+        }
         public ActionResult Index(string buscar)
         {
             ViewBag.familias = db.catalogo.Select(s => s.familia).Distinct().ToList();

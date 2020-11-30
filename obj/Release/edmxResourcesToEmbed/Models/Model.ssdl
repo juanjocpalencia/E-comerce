@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecomerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="catalogo">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="producto" Type="varchar" MaxLength="200" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="costo" Type="float" />
+    <Property Name="capacidad" Type="int" />
+    <Property Name="procesador" Type="varchar" MaxLength="200" />
+    <Property Name="sistemaOperativo" Type="varchar" MaxLength="200" />
+    <Property Name="foro" Type="varchar" MaxLength="200" />
+    <Property Name="familia" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="contratos">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="id_maquina" Type="int" />
+    <Property Name="id_pago" Type="int" />
+  </EntityType>
+  <EntityType Name="Historico">
+    <Key>
+      <PropertyRef Name="id_historicopagos" />
+    </Key>
+    <Property Name="id_historicopagos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha_pago" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="cantidad" Type="float" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="200" />
+    <Property Name="pwd" Type="varchar" MaxLength="200" />
+    <Property Name="usuario" Type="varchar" MaxLength="200" />
+    <Property Name="nombre" Type="varchar" MaxLength="200" />
+    <Property Name="ap_mat" Type="varchar" MaxLength="200" />
+    <Property Name="ap_pat" Type="varchar" MaxLength="200" />
+    <Property Name="numero" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_contratos_contratos">
+    <End Role="catalogo" Type="Self.catalogo" Multiplicity="0..1" />
+    <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_maquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contratos_Historico">
+    <End Role="Historico" Type="Self.Historico" Multiplicity="0..1" />
+    <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Historico">
+        <PropertyRef Name="id_historicopagos" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contratos_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ecomerceModelStoreContainer">
+    <EntitySet Name="catalogo" EntityType="Self.catalogo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="contratos" EntityType="Self.contratos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Historico" EntityType="Self.Historico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_contratos_contratos" Association="Self.FK_contratos_contratos">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contratos_Historico" Association="Self.FK_contratos_Historico">
+      <End Role="Historico" EntitySet="Historico" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contratos_usuarios" Association="Self.FK_contratos_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

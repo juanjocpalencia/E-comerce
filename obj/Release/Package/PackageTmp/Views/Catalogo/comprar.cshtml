@@ -1,0 +1,20 @@
+﻿@model IEnumerable<E_comerce.Models.catalogo>
+
+@{
+    ViewBag.Title = "comprar";
+}
+
+<div class="container">
+    <h2>Orden de compra</h2>
+    @foreach (var item in Model)
+    {
+        <p>Sistema Operativo:</p>
+        <p>@item.sistemaOperativo</p>
+        <br />
+        <p>Costo: $@item.costo</p>
+    }
+
+    <button type="button" class="btn btn-light">Comprar</button>
+</div>
+
+

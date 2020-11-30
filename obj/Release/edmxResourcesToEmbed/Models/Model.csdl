@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ecomerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="catalogo">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="producto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="costo" Type="Double" />
+    <Property Name="capacidad" Type="Int32" />
+    <Property Name="procesador" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="sistemaOperativo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="contratos" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="catalogo" ToRole="contratos" />
+    <Property Name="foro" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="familia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="contratos">
+    <Key>
+      <PropertyRef Name="id_contrato" />
+    </Key>
+    <Property Name="id_contrato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="id_maquina" Type="Int32" />
+    <Property Name="id_pago" Type="Int32" />
+    <NavigationProperty Name="contratos1" Relationship="Self.FK_contratos_contratos" FromRole="contratos" ToRole="contratos1" />
+    <NavigationProperty Name="contratos2" Relationship="Self.FK_contratos_contratos" FromRole="contratos1" ToRole="contratos" />
+    <NavigationProperty Name="Historico" Relationship="Self.FK_contratos_Historico" FromRole="contratos" ToRole="Historico" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_contratos_usuarios" FromRole="contratos" ToRole="usuarios" />
+    <NavigationProperty Name="catalogo" Relationship="ecomerceModel.FK_contratos_contratos1" FromRole="contratos" ToRole="catalogo" />
+  </EntityType>
+  <EntityType Name="Historico">
+    <Key>
+      <PropertyRef Name="id_historicopagos" />
+    </Key>
+    <Property Name="id_historicopagos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha_pago" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="cantidad" Type="Double" />
+    <NavigationProperty Name="contratos" Relationship="Self.FK_contratos_Historico" FromRole="Historico" ToRole="contratos" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="pwd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ap_mat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ap_pat" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="numero" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="contratos" Relationship="Self.FK_contratos_usuarios" FromRole="usuarios" ToRole="contratos" />
+  </EntityType>
+  <Association Name="FK_contratos_contratos">
+    <End Role="contratos" Type="Self.contratos" Multiplicity="1" />
+    <End Role="contratos1" Type="Self.contratos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="contratos">
+        <PropertyRef Name="id_contrato" />
+      </Principal>
+      <Dependent Role="contratos1">
+        <PropertyRef Name="id_contrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contratos_Historico">
+    <End Role="Historico" Type="Self.Historico" Multiplicity="0..1" />
+    <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Historico">
+        <PropertyRef Name="id_historicopagos" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_pago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_contratos_usuarios">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="contratos" Type="Self.contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ecomerceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="catalogo" EntityType="Self.catalogo" />
+    <EntitySet Name="contratos" EntityType="Self.contratos" />
+    <EntitySet Name="Historico" EntityType="Self.Historico" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" />
+    <AssociationSet Name="FK_contratos_contratos" Association="Self.FK_contratos_contratos">
+      <End Role="contratos" EntitySet="contratos" />
+      <End Role="contratos1" EntitySet="contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contratos_Historico" Association="Self.FK_contratos_Historico">
+      <End Role="Historico" EntitySet="Historico" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contratos_usuarios" Association="Self.FK_contratos_usuarios">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_contratos_contratos1" Association="ecomerceModel.FK_contratos_contratos1">
+      <End Role="catalogo" EntitySet="catalogo" />
+      <End Role="contratos" EntitySet="contratos" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_contratos_contratos1">
+    <End Type="ecomerceModel.catalogo" Role="catalogo" Multiplicity="0..1" />
+    <End Type="ecomerceModel.contratos" Role="contratos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="catalogo">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="contratos">
+        <PropertyRef Name="id_maquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="30202b4c9296429dbc0b89ea4272c52e" Name="Diagram1">
+        <EntityTypeShape EntityType="ecomerceModel.catalogo" Width="1.5" PointX="7.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecomerceModel.contratos" Width="1.5" PointX="3.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecomerceModel.Historico" Width="1.5" PointX="1.375" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecomerceModel.sysdiagrams" Width="1.5" PointX="1.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecomerceModel.usuarios" Width="1.5" PointX="9.375" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="ecomerceModel.FK_contratos_contratos" ManuallyRouted="false" />
+        <AssociationConnector Association="ecomerceModel.FK_contratos_Historico" ManuallyRouted="false" />
+        <AssociationConnector Association="ecomerceModel.FK_contratos_usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="ecomerceModel.FK_contratos_contratos1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
