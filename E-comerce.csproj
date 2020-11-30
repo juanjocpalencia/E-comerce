@@ -133,6 +133,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CatalogoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaypalConfiguration.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\usuariosController.cs" />
     <Compile Include="Global.asax.cs">
