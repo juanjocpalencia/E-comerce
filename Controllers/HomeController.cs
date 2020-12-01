@@ -64,6 +64,10 @@ namespace E_comerce.Controllers
           
         }
 
+        public ActionResult Condiciones()
+        {
+            return View();
+        }
 
         public ActionResult PaymentWithPaypal(string Cancel = null)
         {
