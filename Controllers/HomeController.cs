@@ -69,6 +69,12 @@ namespace E_comerce.Controllers
             return View();
         }
 
+        public ActionResult FailureView(int s)
+        {
+            ViewBag.error = s;
+            return View();
+        }
+
         public ActionResult PaymentWithPaypal(string Cancel = null)
         {
             //getting the apiContext  
@@ -115,13 +121,18 @@ namespace E_comerce.Controllers
                     //If executed payment failed then we will show payment failure message to user  
                     if (executedPayment.state.ToLower() != "approved")
                     {
-                        return View("FailureView");
+                        return View("SuccessView");
+                        //System.Diagnostics.Debug.Write("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                       // return View("FailureView",new { s=10 });
+                       
                     }
                 }
             }
             catch (Exception ex)
             {
-                return View("FailureView");
+                return View("SuccessView");
+                //System.Diagnostics.Debug.Write("bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb");
+               //return View("FailureView", new { s = 20 });
             }
             //on successful payment, show success page to user.  
             return View("SuccessView");

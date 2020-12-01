@@ -16,10 +16,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 10:11:03</publishTime>
     </File>
     <File Include="bin/E-comerce.dll">
-      <publishTime>11/29/2020 20:39:23</publishTime>
+      <publishTime>11/30/2020 22:25:30</publishTime>
     </File>
     <File Include="bin/E-comerce.pdb">
-      <publishTime>11/29/2020 20:39:23</publishTime>
+      <publishTime>11/30/2020 22:25:30</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/23/2020 22:03:10</publishTime>
@@ -280,7 +280,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 10:11:03</publishTime>
     </File>
     <File Include="Models/Model.edmx.diagram">
-      <publishTime>11/15/2020 16:46:39</publishTime>
+      <publishTime>11/30/2020 17:16:25</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/14/2020 10:11:03</publishTime>
@@ -339,20 +339,26 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/Home/About.cshtml">
       <publishTime>11/14/2020 10:11:03</publishTime>
     </File>
+    <File Include="Views/Home/Condiciones.cshtml">
+      <publishTime>11/30/2020 20:53:31</publishTime>
+    </File>
     <File Include="Views/Home/Contact.cshtml">
       <publishTime>11/14/2020 10:11:03</publishTime>
     </File>
+    <File Include="Views/Home/FailureView.cshtml">
+      <publishTime>11/30/2020 22:10:35</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/29/2020 20:28:52</publishTime>
+      <publishTime>11/30/2020 22:23:30</publishTime>
     </File>
     <File Include="Views/Home/SuccessView.cshtml">
-      <publishTime>11/29/2020 20:22:47</publishTime>
+      <publishTime>11/30/2020 22:22:15</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/14/2020 10:11:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>11/21/2020 14:36:44</publishTime>
+      <publishTime>11/30/2020 22:20:10</publishTime>
     </File>
     <File Include="Views/usuarios/Create.cshtml">
       <publishTime>11/22/2020 01:46:18</publishTime>
